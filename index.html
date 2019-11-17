@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script type="module" src="./dist/index.js"></script>
+</head>
+
+<body>
+
+    <syntax-highlight class="language-css">
+        <pre><code class="language-css">p { color: red }</code></pre>
+    </syntax-highlight>
+
+    <syntax-highlight class="language-js">
+        <pre><code class="language-js">
+import style from "./prism.css";
+
+export default class SyntaxHighlight extends HTMLElement {
+    constructor() {
+        super();
+        const template = document.createElement('template');
+        template.innerHTML = `&lt;style&gt;${style}&lt;/style&gt`;
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+
+    connectedCallback() {
+        Array.from(this.children).forEach( el => {
+            import("./prism").then( (Prism) => {
+                Prism.default.highlightElement(el, false, () => {
+                    this.shadowRoot!.appendChild(el)
+                });
+            })
+        });
+    }
+
+}
+
+window.customElements.define('syntax-highlight', SyntaxHighlight);
+    </code></pre>
+    </syntax-highlight>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{
+  "name": "@bgoodman/syntax-highlight",
+  "version": "1.0.0",
+  "description": "Cusom element for displaying code with syntax highlighting using Prism.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/rollup -c rollup.config.js",
+    "start": "./node_modules/.bin/serve"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.16.0",
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "serve": "^11.2.0",
+    "typescript": "^3.7.2",
+    "typescript-plugin-css-modules": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-goodman/syntax-highlight.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "custom-element",
+    "prism-js"
+  ],
+  "author": "Benjamin Goodman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b-goodman/syntax-highlight/issues"
+  },
+  "homepage": "https://github.com/b-goodman/syntax-highlight/readme",
+  "dependencies": {
+    "prismjs": "^1.17.1"
+  }
+}
