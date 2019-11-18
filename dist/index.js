@@ -3,8 +3,9 @@ var css = "/* PrismJS 1.17.1\nhttps://prismjs.com/download.html#themes=prism-oka
 class SyntaxHighlight extends HTMLElement {
     constructor() {
         super();
+        this.customTheme = "font-family: monospace; font-size: 16px;";
         const template = document.createElement('template');
-        template.innerHTML = `<style>${css}</style>`;
+        template.innerHTML = `<style>${css}${this.customTheme}</style>`;
         const shadowRoot = this.attachShadow({ mode: 'open' });
         shadowRoot.appendChild(template.content.cloneNode(true));
     }
