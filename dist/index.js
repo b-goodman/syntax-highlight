@@ -3,11 +3,19 @@ var css = "/* PrismJS 1.17.1\nhttps://prismjs.com/download.html#themes=prism-oka
 class SyntaxHighlight extends HTMLElement {
     constructor() {
         super();
-        this.customTheme = "font-family: monospace; font-size: 16px;";
+        this.defaultFontFamily = "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace";
+        this.defaultFontSize = "1em";
         const template = document.createElement('template');
-        template.innerHTML = `<style>${css}${this.customTheme}</style>`;
+        template.innerHTML = `
+            <style>${css}</style>
+            <style id="customTheme">${this.customTheme()}</style>
+        `;
         const shadowRoot = this.attachShadow({ mode: 'open' });
         shadowRoot.appendChild(template.content.cloneNode(true));
+        this.customThemeEl = shadowRoot.querySelector("#customTheme");
+    }
+    static get observedAttributes() {
+        return ["font-family", "font-size"];
     }
     connectedCallback() {
         Array.from(this.children).forEach(el => {
@@ -18,6 +26,31 @@ class SyntaxHighlight extends HTMLElement {
             });
         });
     }
+    get fontFamily() {
+        return this.getAttribute("font-family") || this.defaultFontFamily;
+    }
+    set fontFamily(newFont) {
+        this.setAttribute("font-family", newFont);
+    }
+    get fontSize() {
+        return this.getAttribute("font-size") || this.defaultFontSize;
+    }
+    set fontSize(newSize) {
+        this.setAttribute("font-size", newSize);
+    }
+    attributeChangedCallback(name, _oldVal, newVal) {
+        if ((name === "font-family" || name === "font-size") && _oldVal !== newVal) {
+            this.customThemeEl.innerHTML = this.customTheme();
+            console.log(this.customTheme);
+        }
+    }
+    customTheme() {
+        return (`pre {
+                font-family: ${this.fontFamily} !important;
+                font-size: ${this.fontSize} !important;
+            }`);
+    }
+    ;
 }
 window.customElements.define('syntax-highlight', SyntaxHighlight);
 

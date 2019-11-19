@@ -29,9 +29,15 @@
   "keywords": [
     "webcomponent",
     "custom-element",
+    "synatx",
+    "highlight",
     "prism-js"
   ],
-  "author": "Benjamin Goodman",
+  "author": {
+    "name": "Benjamin Goodman",
+    "email": "b@thebgoodman.com",
+    "url": "https://thebgoodman.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/b-goodman/syntax-highlight/issues"

@@ -1,3 +1,18 @@
+# syntax-highlight
+
+Cusom element for displaying code with syntax highlighting using [Prism](https://prismjs.com/).
+
+## Installation
+
+```bash
+npm install @bgoodman/syntax-highlight
+
+yarn add @bgoodman/syntax-highlight
+```
+
+## Usage
+
+```html
 <html>
 
 <head>
@@ -21,3 +36,14 @@
 </body>
 
 </html>
+```
+
+## Attrbiutes
+
+### `font-family`
+
+Pass any valid css value for `font-family` to the element.
+
+### `font-size`
+
+Pass any valid css value for `font-size` to the element.
